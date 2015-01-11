@@ -32,6 +32,14 @@ public class ReplacementFilter implements ISatiniseFilter
 		    return s.replaceFirst(targetRegext, replacement);
 		}
 		break;
+	    case EXCLUSIVE:
+		if(s.matches(targetRegext))
+		{
+		    return s.replaceAll(targetRegext, replacement);
+		}		
+		break;
+	    default:
+		throw new RuntimeException("unknown filter type: "+this.location);
 	}
 	return s.trim();
     }
